@@ -1,8 +1,9 @@
 package com.ob.other.test;
 
-import com.google.common.collect.Lists;
-
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author: oubin
@@ -11,13 +12,33 @@ import java.util.List;
  */
 public class Test {
 
+    public static final String abc = "a";
+
     public static void main(String[] args) {
 
-        List<String> list = Lists.newArrayList();
-        list.add("a");
-        list.add("b");
-        System.out.println(Lists.newArrayList(list.subList(0,0)));
-        System.out.println("bbc5ea34-d852-11e9-9315-ecf4bbc4ecdc".hashCode());
+        println("user.abc");
 
+        LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
+        linkedHashMap.put("a", 1);
+        linkedHashMap.put("b", 2);
+        linkedHashMap.put("c", 3);
+        linkedHashMap.get("b");
+        Set<Map.Entry<String, Integer>> entries = linkedHashMap.entrySet();
+        Iterator<Map.Entry<String, Integer>> iterator = entries.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> next = iterator.next();
+            System.out.println(next.getKey() + next.getValue());
+        }
+
+        try {
+
+        } finally {
+
+        }
+
+    }
+
+    private static void println(String property) {
+        System.out.println(System.getProperty(property));
     }
 }
